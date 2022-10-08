@@ -1,0 +1,22 @@
+{% extends 'common/base.html' %}
+
+{% block title %}NextGen Sign In{% endblock title %}
+
+{% block body %}
+
+<div class="row m-0 p-0 align-items-center justify-content-center" style="background: linear-gradient(90deg, #b1d3d3 0%, #b87979 100%); height: 80vh;">
+    <div class="col col-4 card shadow" style="height: 450px;">
+        <form class="m-2" method="post" target="">
+            {% csrf_token %}
+            <div class="form-group">
+            {{form}}
+            </div>
+            <br>
+            {% if message %}
+              <div id="message" class="form-text text-danger">{{message}}</div>
+            {% endif %}
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button> 
+        </form>
+    </div>
+</div>
+{% endblock body %}
