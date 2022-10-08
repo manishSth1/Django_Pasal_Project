@@ -1,0 +1,44 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg" style="background-color: #9dc9f5;">
+    <div class="container px-3 px-lg-0">
+        <a class="navbar-brand" href="/">NextGen Electronics</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#!">About</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">All Products</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="search NextGen" aria-label="Search" style="border: 2px solid black;">
+            </form>
+            <form class="d-flex">
+                <button class="btn btn-outline-dark me-2"  style="background-color: white; border: 2px solid black;" type="submit">
+                    <i class="bi-cart-fill me-1"></i>
+                    Add to Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </button>
+            </form>
+            <div>
+                {% if request.user.is_authenticated %}
+                    <form class="d-flex" method="post" action="/logout">
+                        {% csrf_token %}
+                        <input class="btn btn-outline-dark" type="submit" value="Sign Out" style="border: 2px solid black;">
+                    </form>
+                {% else %}
+                <a href="/signin" class="btn btn-outline-dark" style="background-color: white; border: 2px solid black;">
+                Log In
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
